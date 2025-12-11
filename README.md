@@ -1,16 +1,26 @@
-# Blockchain Learning + Security CTF Setup
+# ChainLearn – Blockchain Learning & Security CTF
 
-Dieses Repo enthält das Grund-Setup für eine Blockchain-Lern- und CTF-Umgebung.
+ChainLearn ist eine mission-basierte Lern- und CTF-Plattform für Blockchain- und Smart-Contract-Security.  
+Statt direkt mit Hacks zu beginnen, führt ChainLearn Nutzer über einen klaren Lernpfad:
 
-Ziele:
-- Minimaler, aber sauberer Core (Setup + wenige Challenges)
-- Erweiterbar für den BISD-Blockchainkurs (weitere Challenges)
-- Integration mit CTFd als CTF-Frontend
+1. Grundlagen verstehen (Wallets, Signaturen, Transaktionen)
+2. Smart Contracts korrekt implementieren
+3. Security-Patterns erkennen und anwenden
+4. Capstone-Challenges lösen (Exploit erst ganz am Ende)
 
-Aktueller Fokus (Phase 1):
-- CTFd als Plattform vorbereiten
-- Foundry-basiertes Challenge-Template definieren
-- 2–3 Beispiel-Challenges:
-  - Mission A: Blockchain Fundamentals (A1 + A-Capstone)
-  - Mission B: Smart-Contract Basics (B-Capstone)
-  - Mission C: Security Basics (C-Capstone Reentrancy)
+Das System basiert auf:
+- **CTFd** als Frontend für Challenges, Missionen und Flag-Validierung  
+- **Foundry** als technische Engine, die prüft, ob eine Lösung korrekt ist  
+- Einem modularen Challenge-Template, das leicht durch Studierende erweitert werden kann  
+
+Ziel des MVP:
+Ein funktionierendes Setup mit nur wenigen Beispiel-Challenges, das im BISD-Blockchainkurs später wie ein „Challenge-Baukasten“ erweitert werden kann.
+
+---
+
+## Quickstart
+
+### 1. CTFd starten
+```bash
+cd tooling/ctfd
+docker-compose up

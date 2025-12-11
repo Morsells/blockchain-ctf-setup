@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  ctfd:
+    image: ctfd/ctfd:latest
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///ctfd.db
+      - SECRET_KEY=dev
+      - UPLOAD_FOLDER=/var/uploads
+      - LOG_FOLDER=/var/log/CTFd
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./data:/var/uploads
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    restart: always
