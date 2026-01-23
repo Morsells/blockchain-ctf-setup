@@ -1,6 +1,8 @@
 # Foundry / Forge
 out/
 cache/
+**/out/
+**/cache/
 
 # Node / Next.js (falls später)
 node_modules/
