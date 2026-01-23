@@ -1,27 +1,34 @@
-@'
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.33;
 
 import "forge-std/Test.sol";
 import "../src/Challenge.sol";
 import "../src/Solution.sol";
+import "forge-std/console2.sol";
 
-contract ChallengeTest is Test {
+contract C4UpgradeSweepTest is Test {
     Setup setup;
     Solution sol;
+
     address player = vm.addr(1);
 
     function setUp() public {
-        setup = new Setup();
+        // Player startet bei 0, soll am Ende >= 10 ether haben
+        vm.deal(player, 0);
+
+        // Setup lädt 10 ether in den Proxy
+        setup = new Setup{value: 10 ether}();
         sol = new Solution();
     }
 
-    function test_solve() public {
+    function test_C4_upgrade_sweep() public {
+        assertFalse(setup.isSolved(player), "should not be solved yet");
+
         vm.startPrank(player);
         sol.solve(setup);
         vm.stopPrank();
 
         assertTrue(setup.isSolved(player), "not solved");
+        console2.log("FLAG{missionC_C4_upgrade_sweep}");
     }
 }
-'@ | Set-Content -Encoding UTF8 "templates\foundry-challenge-template\test\Challenge.t.sol"
