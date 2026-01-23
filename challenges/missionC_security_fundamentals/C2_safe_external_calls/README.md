@@ -1,28 +1,24 @@
-@'
-# <Mission> – <Challenge Titel>
+# Mission C2 – Safe External Calls
 
 ## Kontext
-...
+Ein Contract, der Ether auszahlt, kann in Probleme laufen, wenn er erst auszahlt und erst danach seinen Zustand aktualisiert.
 
 ## Ziel
-...
+Leere die Vault und erhalte mindestens 1 Ether.
 
 ## Gegebene Contracts
-- Challenge.sol
-- Solution.sol
+- `PayoutVault` verwaltet Guthaben pro Adresse
+- `Setup` lädt 1 Ether in die Vault
 
 ## Aufgabe
-...
-
-## Exploit
-...
+Schaffe es, die Vault leer zu bekommen, obwohl du ursprünglich nur einen kleinen Anteil eingezahlt hast.
 
 ## Testen
-forge test -vvv
+Im Ordner `C2_safe_external_calls`:
+`forge test -vvv`
 
 ## Erfolgskriterium
-...
+Vault-Balance = 0 und Player-Balance >= 1 Ether
 
 ## Flag
-FLAG{...}
-'@ | Set-Content -Encoding UTF8 "templates\foundry-challenge-template\README.md"
+`FLAG{missionC_C2_safe_external_calls}`
