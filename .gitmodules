@@ -1,0 +1,15 @@
+[submodule "challenges/missionA_Fundamentals/A1_hashing_basics/lib/forge-std"]
+	path = challenges/missionA_Fundamentals/A1_hashing_basics/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "challenges/missionA_Fundamentals/A2_signature_recovery/lib/forge-std"]
+	path = challenges/missionA_Fundamentals/A2_signature_recovery/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "challenges/missionA_Fundamentals/A3_context_binding/lib/forge-std"]
+	path = challenges/missionA_Fundamentals/A3_context_binding/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "challenges/missionA_Fundamentals/A4_nonce_deadline/lib/forge-std"]
+	path = challenges/missionA_Fundamentals/A4_nonce_deadline/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "challenges/missionA_Fundamentals/A5_signed_transfer/lib/forge-std"]
+	path = challenges/missionA_Fundamentals/A5_signed_transfer/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
