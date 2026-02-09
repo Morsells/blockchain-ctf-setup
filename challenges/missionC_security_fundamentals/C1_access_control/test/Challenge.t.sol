@@ -4,7 +4,6 @@ pragma solidity ^0.8.33;
 import "forge-std/Test.sol";
 import "../src/Challenge.sol";
 import "../src/Solution.sol";
-import "forge-std/console2.sol";
 
 contract C1AccessControlTest is Test {
     Setup setup;
@@ -29,6 +28,7 @@ contract C1AccessControlTest is Test {
         vm.stopPrank();
 
         assertTrue(setup.isSolved(player), "not solved");
-        console2.log("FLAG{missionC_C1_access_control}");
+
+        emit log_string("FLAG{missionC_C1_access_control}");
     }
 }
