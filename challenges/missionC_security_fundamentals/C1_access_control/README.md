@@ -1,12 +1,12 @@
-# C1 — Access Control
+# C1 — Access Control (Offensive)
 
-## Ziel
-Leere die Vault, sodass `Setup.isSolved(player)` am Ende `true` ist.
+## Goal
+Make `Setup.isSolved(player)` return `true`.
 
-## Regeln / Workflow
-- Du löst die Aufgabe, indem du den Exploit in `src/Solution.sol` implementierst.
-- Danach führst du die Tests aus. Wenn alles korrekt ist, erscheint die Flag im Test-Output.
+## Rules
+- Do not modify `src/Challenge.sol` (this is the target system).
+- Implement your exploit in `src/Player.sol`.
 
-## Start
+## How to run
 ```bash
 forge test

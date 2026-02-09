@@ -8,8 +8,6 @@ contract AccessVault {
         owner = msg.sender;
     }
 
-    // BUG: Diese Funktion sollte eigentlich nur der Owner nutzen dürfen,
-    // ist aber komplett ungeschützt.
     function setOwner(address newOwner) external {
         owner = newOwner;
     }
@@ -34,7 +32,6 @@ contract Setup {
     }
 
     function isSolved(address player) external view returns (bool) {
-        // gelöst, wenn die Vault leer ist und der Spieler mindestens 1 Ether hat
         return address(vault).balance == 0 && player.balance >= TREASURY;
     }
 }
