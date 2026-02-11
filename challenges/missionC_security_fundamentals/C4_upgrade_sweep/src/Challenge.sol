@@ -32,7 +32,7 @@ contract SimpleProxy {
     receive() external payable {}
 }
 
-// V1: harmlos, aber mit Storage-Kollision (slot0) -> überschreibt proxy.admin via delegatecall
+// V1: harmless, but with a storage collision (slot 0) -> overwrites proxy.admin via delegatecall
 contract LogicV1 {
     uint256 public value; // slot 0
 
@@ -41,14 +41,14 @@ contract LogicV1 {
     }
 }
 
-// V2: “böse” Funktion, die nur nach Upgrade erreichbar ist
+// V2: “malicious” function, only reachable after an upgrade
 contract LogicV2 {
-    // optional: gleiches Layout wie V1
+    // optional: same layout as V1
     uint256 public value; // slot 0
 
     function sweep(address payable to) external {
-    (bool sent,) = to.call{value: address(this).balance}("");
-    require(sent, "send failed");
+        (bool sent,) = to.call{value: address(this).balance}("");
+        require(sent, "send failed");
     }
 }
 
@@ -65,7 +65,7 @@ contract Setup {
     }
 
     function isSolved(address player) external view returns (bool) {
-        // gelöst, wenn Proxy leer ist und Player mind. Treasury erhalten hat
+        // solved when the proxy is drained and the player has at least the treasury amount
         return address(proxy).balance == 0 && player.balance >= TREASURY;
     }
 }

