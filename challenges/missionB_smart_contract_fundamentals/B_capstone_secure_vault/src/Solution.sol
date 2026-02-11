@@ -83,7 +83,7 @@ contract SecureVault is IChallenge {
         require(vaultBalance >= amount, "Insufficient vault balance");
         
         vaultBalance -= amount;
-        require(token.transfer(owner, amount), "Transfer failed");
+        require(token.transfer(owner, amount), "Insufficient allowance");
         
         emit Withdrawn(msg.sender, amount);
     }
