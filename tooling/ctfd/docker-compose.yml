@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///ctfd.db
+      - DATABASE_URL=sqlite:////var/uploads/ctfd.db
       - SECRET_KEY=dev
       - UPLOAD_FOLDER=/var/uploads
       - LOG_FOLDER=/var/log/CTFd
