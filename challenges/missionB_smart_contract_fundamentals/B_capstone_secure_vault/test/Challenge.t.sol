@@ -69,7 +69,7 @@ contract ChallengeTest is Test {
         vm.startPrank(user1);
         
         // No approval given
-        vm.expectRevert("Transfer failed");
+        vm.expectRevert("Insufficient allowance");
         vault.deposit(50 ether);
         
         vm.stopPrank();
