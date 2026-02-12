@@ -1,15 +1,13 @@
-# D2 – Oracle & Vertrauen
+# D2 - Oracle Trust
 
-Kontext:
-Ein Oracle speichert nur den letzten Spot-Preis aus dem AMM.
+## Goal
+- Show that the oracle price can be manipulated via AMM trades.
+- Push oracle price up and lock it in with `update()`.
 
-Ziel:
-- Zeige, dass der Oracle-Preis durch Trades manipulierbar ist
-- Oracle per `update()` auf einen falschen Preis setzen
+## Rules
+- Do not modify `src/Challenge.sol`
+- Implement your logic only in `src/Player.sol`.
+- Do not change the assertions in `test/Challenge.t.sol`.
 
-Run:
-forge test -vvv
-
-Success:
-FLAG{missionD_D2_oracle_trust}
-
+## How to run
+forge test

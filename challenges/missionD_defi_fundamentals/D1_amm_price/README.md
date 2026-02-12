@@ -1,15 +1,14 @@
-# D1 – AMM & Preislogik
+# D1 - AMM Price
 
-Kontext:
-Ein AMM bestimmt Preise über seine Reserven und eine kleine Fee.
+## Goal
+- Calculate AMM spot price correctly from reserves.
+- Calculate quote output correctly with fee.
+- Return the new spot price after a swap.
 
-Ziel:
-- Spot-Preis korrekt aus Reserven berechnen
-- Quote mit Fee korrekt berechnen
-- Nach einem Swap den neuen Preis korrekt berechnen
+## Rules
+- Do not modify `src/Challenge.sol` or `src/SimpleAMM.sol`.
+- Implement your logic only in `src/Player.sol`.
+- Do not change the assertions in `test/Challenge.t.sol`.
 
-Run:
-forge test -vvv
-
-Success:
-FLAG{missionD_D1_amm_price}
+## How to run
+forge test

@@ -1,14 +1,14 @@
-# D4 – Flashloan als Werkzeug
+# D4 - Flashloan Flow
 
-Konzept:
-Flashloan nutzt man, um Preis/Oracle kurzfristig zu beeinflussen und Lending zu nutzen.
+## Goal
+- Use a flashloan to manipulate AMM/oracle state and borrow profitably.
+- Repay flashloan plus fee in the same transaction.
+- Keep positive profit after repayment.
 
-Ziel:
-- Flashloan aufnehmen, AMM-Preis manipulieren, Oracle beeinflussen, Lending ausnutzen
-- Flashloan inkl. Fee zurückzahlen und Profit behalten
+## Rules
+- Do not modify `src/Challenge.sol` or protocol contracts in `src/`.
+- Implement your logic only in `src/Player.sol`.
+- Do not change the assertions in `test/Challenge.t.sol`.
 
-Run:
-forge test -vvv
-
-Success:
-FLAG{missionD_D4_flashloan}
+## How to run
+forge test

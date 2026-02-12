@@ -1,14 +1,13 @@
-# D3 – Collateral & Systemlogik
+# D3 - Collateral Logic
 
-Kontext:
-Lending entscheidet anhand von Preisen. Falsche Preise → falsche Entscheidungen.
+## Goal
+- Use manipulated price data to pass collateral checks.
+- Borrow more than the normal limit without tripping `require`.
 
-Ziel:
-- Unterbesicherte Position als „sicher“ durchbringen
-- LTV-Check umgehen, ohne require zu verletzen
+## Rules
+- Do not modify `src/Challenge.sol`, `src/LendingPool.sol`, `src/SimpleAMM.sol`, or `src/SimpleOracle.sol`.
+- Implement your logic only in `src/Player.sol`.
+- Do not change the assertions in `test/Challenge.t.sol`.
 
-Run:
-forge test -vvv
-
-Success:
-FLAG{missionD_D3_collateral_logic}
+## How to run
+forge test
