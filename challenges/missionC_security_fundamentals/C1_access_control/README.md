@@ -1,4 +1,4 @@
-# C1 — Access Control (Offensive)
+# C1 — Access Control
 
 ## Goal
 Make `Setup.isSolved(player)` return `true`.
@@ -8,5 +8,4 @@ Make `Setup.isSolved(player)` return `true`.
 - Implement your exploit in `src/Player.sol`.
 
 ## How to run
-```bash
 forge test

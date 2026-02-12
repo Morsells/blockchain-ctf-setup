@@ -3,18 +3,18 @@ pragma solidity ^0.8.33;
 
 import "forge-std/Test.sol";
 import "../src/Challenge.sol";
-import "../src/Solution.sol"; // for the player version, switch the import to Player.sol
+import "../src/Player.sol";
 
 contract C4UpgradeSweepTest is Test {
     Setup setup;
-    Solution solver; // for the player version, switch this to Player
+    Player solver;
 
     address player = vm.addr(1);
 
     function setUp() public {
         vm.deal(player, 0);
         setup = new Setup{value: 10 ether}();
-        solver = new Solution(); // for the player version, change this to "new Player()"
+        solver = new Player();
     }
 
     function test_c4_upgrade_sweep() public {

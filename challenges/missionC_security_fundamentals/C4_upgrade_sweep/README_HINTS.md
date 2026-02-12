@@ -1,10 +1,11 @@
-# C2 — Hints
+# C4 — Hints
 
 ## Hint 1
-Look at the order of operations in `withdraw()`.
+The proxy forwards calls using `delegatecall` to the current implementation.
 
 ## Hint 2
-What happens if a contract receives ETH and calls back into `withdraw()` before the state is updated?
+Under `delegatecall`, the implementation writes into the proxy’s storage layout.
 
 ## Hint 3 (strong)
-Deposit a small amount for your exploit contract, call `withdraw()`, and reenter in `receive()` until the vault is empty.
+`SimpleProxy.admin` is stored in storage slot 0, and `LogicV1.value` is also slot 0.  
+Call `setValue(uint256)` through the proxy to overwrite `admin`, then call `upgradeTo(address)` to switch to `LogicV2`, and finally call `sweep(address)` through the proxy.

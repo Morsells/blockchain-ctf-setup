@@ -1,4 +1,4 @@
-# C5 — Capstone: Reentrancy Reward Vault (Offensive)
+# C5 — Capstone: Reentrancy Reward Vault
 
 ## Goal
 Drain the vault and make `Setup.isSolved(player)` return `true`.
@@ -12,5 +12,4 @@ The challenge is solved when:
 - Implement your exploit in `src/Player.sol` (PLAYER_TODO pack).
 
 ## How to run
-```bash
 forge test

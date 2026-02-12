@@ -1,4 +1,4 @@
-# C3 — Storage Collision Takeover (Offensive)
+# C3 — Storage Collision Takeover
 
 ## Goal
 Become the proxy admin: `proxy.admin() == player`.
@@ -8,5 +8,4 @@ Become the proxy admin: `proxy.admin() == player`.
 - Implement your exploit in `src/Player.sol` (PLAYER_TODO pack).
 
 ## How to run
-```bash
 forge test

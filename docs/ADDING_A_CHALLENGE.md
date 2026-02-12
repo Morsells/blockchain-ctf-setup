@@ -34,4 +34,8 @@ Diese Flag wird in CTFd als korrekte Lösung hinterlegt.
    - bei nicht gelöster Aufgabe die Tests fehlschlagen
    - bei korrekter Lösung die Tests bestehen und Flag gedruckt wird
 5. Challenge in CTFd anlegen:
-   - Name, Kategorie (Mission), Beschreibung, Flag
+   - docker compose up -d
+   - ctfd läuft auf localhost:8000
+   - Mit Admin anemlden: User: Admin PW: toor
+   - Auf challenges navigieren
+   - Auf das Plus klicken und die Challenge befüllen.

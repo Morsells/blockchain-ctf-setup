@@ -1,4 +1,4 @@
-# C2 — Safe External Calls (Offensive)
+# C2 — Safe External Calls
 
 ## Goal
 Drain the vault and make `Setup.isSolved(player)` return `true`.
@@ -8,5 +8,4 @@ Drain the vault and make `Setup.isSolved(player)` return `true`.
 - Implement your exploit in `src/Player.sol` (PLAYER_TODO pack).
 
 ## How to run
-```bash
 forge test
