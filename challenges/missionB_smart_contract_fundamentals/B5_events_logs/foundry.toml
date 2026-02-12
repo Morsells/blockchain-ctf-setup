@@ -1,14 +1,8 @@
 [profile.default]
 src = "src"
-<<<<<<< HEAD
 test = "test"
 out = "out"
 libs = ["lib"]
 solc_version = "0.8.33"
-=======
-out = "out"
-libs = ["lib"]
-solc_version = "0.8.23"
->>>>>>> 41154b96b6f5b3d88f00d9d71d8cedd1cb9a0e55
 optimizer = true
 optimizer_runs = 200

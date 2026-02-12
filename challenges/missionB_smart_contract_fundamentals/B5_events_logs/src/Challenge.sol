@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
-<<<<<<< HEAD
 /*
     CHALLENGE: B5_events_logs
 
@@ -37,35 +36,10 @@ contract Logger {
         // Real logic would be here
     }
 
-=======
-contract Logger {
-    event ActionLogged(address indexed user, string message);
-    event AdminAction(address indexed admin, string action);
-    
-    address public admin;
-    bool public systemActive = true;
-    
-    constructor() {
-        admin = msg.sender;
-    }
-    
-    // BUG: Event wird VOR der require-Prüfung emittiert!
-    function logAction(string memory message) external {
-        emit ActionLogged(msg.sender, message); // Event zu früh!
-        require(systemActive, "System inactive");
-        // Eigentliche Logik hier...
-    }
-    
->>>>>>> 41154b96b6f5b3d88f00d9d71d8cedd1cb9a0e55
     function adminLog(string memory action) external {
         require(msg.sender == admin, "Not admin");
         emit AdminAction(msg.sender, action);
     }
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 41154b96b6f5b3d88f00d9d71d8cedd1cb9a0e55
     function toggleSystem() external {
         require(msg.sender == admin, "Not admin");
         systemActive = !systemActive;
@@ -74,7 +48,6 @@ contract Logger {
 
 contract Setup {
     Logger public logger;
-<<<<<<< HEAD
 
     constructor() {
         logger = new Logger();
@@ -88,16 +61,3 @@ contract Setup {
         return logger.systemActive() == false;
     }
 }
-=======
-    
-    constructor() {
-        logger = new Logger();
-    }
-    
-    function isSolved() external view returns (bool) {
-        // Für diesen Test prüfen wir einfach, ob das System aktiv ist
-        // In der Realität würde man Events über einen Event-Listener prüfen
-        return logger.systemActive() == false;
-    }
-}
->>>>>>> 41154b96b6f5b3d88f00d9d71d8cedd1cb9a0e55

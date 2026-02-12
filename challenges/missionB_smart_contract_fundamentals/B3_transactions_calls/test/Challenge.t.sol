@@ -1,151 +1,57 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.23;
+pragma solidity ^0.8.33;
 
-<<<<<<< HEAD
 import "lib/forge-std/src/Test.sol";
 import "../src/Challenge.sol";
 
-contract B4MsgContextTest is Test {
-    Setup setup;
-    SimpleBank bank;
-    address player = vm.addr(1);
-    address user = vm.addr(2);
-
-    function setUp() public {
-        vm.deal(player, 0);
-        vm.deal(user, 10 ether);
-        
-        setup = new Setup{value: 1 ether}();
-        bank = setup.bank();
-    }
-
-    // ==========================================
-    // TEST 1: deposit()
-    // ==========================================
-    function test_deposit() public {
-        vm.prank(user);
-        bank.deposit{value: 2 ether}();
-        
-        assertEq(bank.getBalance(user), 2 ether, "deposit() should increase balance");
-        assertEq(address(bank).balance, 1 ether + 2 ether, "Bank should have 3 ether");
-    }
-
-    function test_deposit_zero() public {
-        vm.prank(user);
-        vm.expectRevert("Must send ether");
-        bank.deposit{value: 0}();
-    }
-
-    // ==========================================
-    // TEST 2: withdraw() - NUR EIN WITHDRAW!
-    // ==========================================
-    function test_withdraw() public {
-        vm.prank(user);
-        bank.deposit{value: 2 ether}();
-        
-        uint256 before = user.balance;
-        vm.prank(user);
-        bank.withdraw(1 ether);
-        
-        assertEq(bank.getBalance(user), 1 ether, "withdraw() should reduce balance to 1 ether");
-        assertEq(user.balance, before + 1 ether, "withdraw() should send 1 ether");
-    }
-
-    // ==========================================
-    // TEST 3: withdraw twice (separater Test)
-    // ==========================================
-    function test_withdraw_twice() public {
-        vm.prank(user);
-        bank.deposit{value: 2 ether}();
-        
-        vm.prank(user);
-        bank.withdraw(1 ether);
-        
-        uint256 before = user.balance;
-        vm.prank(user);
-        bank.withdraw(1 ether);
-        
-        assertEq(bank.getBalance(user), 0 ether, "second withdraw should reduce balance to 0");
-        assertEq(user.balance, before + 1 ether, "second withdraw should send 1 ether");
-    }
-
-    function test_withdraw_insufficientBalance() public {
-        vm.prank(user);
-        vm.expectRevert("Insufficient balance");
-        bank.withdraw(1 ether);
-    }
-
-    // ==========================================
-    // TEST 4: getBalance()
-    // ==========================================
-    function test_getBalance() public {
-        vm.prank(user);
-        bank.deposit{value: 1.5 ether}();
-        
-        assertEq(bank.getBalance(user), bank.balances(user), "getBalance() should return balances[user]");
-    }
-
-    // ==========================================
-    // TEST 5: Constructor
-    // ==========================================
-    function test_constructor() public {
-        assertEq(address(bank).balance, 1 ether, "Bank should have 1 ether initially");
-        assertEq(bank.getBalance(address(setup)), 1 ether, "Setup should have 1 ether in bank");
-    }
-
-    // ==========================================
-    // TEST 6: isSolved()
-    // ==========================================
-    function test_isSolved() public {
-        assertFalse(setup.isSolved(player), "isSolved() should be false (bank has ether)");
-        
-        // Setup withdraws its deposit
-        vm.prank(address(setup));
-        bank.withdraw(1 ether);
-        
-        assertEq(address(bank).balance, 0 ether, "Bank should be empty");
-        
-        vm.deal(player, 1 ether);
-        assertTrue(setup.isSolved(player), "isSolved() should be true when bank empty and player has 1 ether");
-    }
-
-    // ==========================================
-    // TEST 7: Complete solution with flag
-    // ==========================================
-function test_complete() public {
-    emit log_string("FLAG{mission_B4_msg_context_solved}");
-}
-
-=======
-import "forge-std/Test.sol";
-import "../src/Challenge.sol";
-import "../src/Solution.sol";
-
 contract B3TransactionsCallsTest is Test {
     Setup setup;
-    Solution sol;
-    
-    address player = vm.addr(1);
+    Counter counter;
+    address user1 = address(0x1);
+    address user2 = address(0x2);
+    address user3 = address(0x3);
 
     function setUp() public {
         setup = new Setup();
-        sol = new Solution();
+        counter = setup.counter();
     }
 
-    function test_B3_transactions_calls() public {
+    function test_increment() public {
+        vm.prank(user1);
+        uint256 result = counter.increment();
+        
+        assertEq(result, 1, "increment() should return 1");
+        assertEq(counter.count(), 1, "count should be 1");
+        assertEq(counter.lastCaller(), user1, "lastCaller should be user1");
+    }
+
+    function test_getCount() public {
+        vm.prank(user1);
+        counter.increment();
+        
+        assertEq(counter.getCount(), counter.count(), "getCount() should return count");
+    }
+
+    function test_getLastCaller() public {
+        vm.prank(user1);
+        counter.increment();
+        
+        assertEq(counter.getLastCaller(), counter.lastCaller(), "getLastCaller() should return lastCaller");
+    }
+
+    function test_constructor() public {
+        assertTrue(address(counter) != address(0), "counter was not initialized");
+    }
+
+    function test_isSolved() public {
         assertFalse(setup.isSolved(), "should not be solved yet");
-
-        vm.startPrank(player);
-        sol.solve(setup);
-        vm.stopPrank();
-
-        assertTrue(setup.isSolved(), "not solved");
+        
+        vm.prank(user1); counter.increment();
+        vm.prank(user2); counter.increment();
+        vm.prank(user3); counter.increment();
+        
+        assertTrue(setup.isSolved(), "should be solved after 3 transactions");
+        
         emit log_string("FLAG{mission_B3_transactions_calls_solved}");
     }
-    
-    function test_initial_votes_zero() public view {
-        Voter voter = setup.voter();
-        assertEq(voter.votes(), 0, "Initial votes should be 0");
-    }
->>>>>>> 41154b96b6f5b3d88f00d9d71d8cedd1cb9a0e55
 }
