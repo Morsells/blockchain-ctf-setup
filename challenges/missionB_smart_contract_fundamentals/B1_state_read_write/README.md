@@ -1,66 +1,21 @@
-## Foundry
+### B1 - State Read & Write
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Goal:
+Understand how smart contracts store and modify state variables.
+You must correctly implement a persistent counter that can be incremented and read without accidentally modifying state in view functions.
 
-Foundry consists of:
+## The contract must:
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- Start with value 0
 
-## Documentation
+- Increase when increment() is called
+- Be readable via counter() and getCounter()
+- Not modify state inside view functions
+- Mark the setup as solved after 5 increments
 
-https://book.getfoundry.sh/
+## Run
+forge test -vvv
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Success
+Test prints:
+FLAG{mission_B1_state_read_write_solved}
