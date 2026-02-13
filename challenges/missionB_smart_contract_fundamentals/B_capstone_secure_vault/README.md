@@ -1,66 +1,20 @@
-## Foundry
+### B - Capstone Secure Vault
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Goal:
+Implement a token vault that safely stores ERC20 tokens for multiple users while enforcing ownership and pause control.
 
-Foundry consists of:
+## The vault must:
+- Accept deposits only after approve
+- Track balances per user
+- Track total vault balance
+- Allow only the owner to withdraw
+- Support pause / unpause
+- Block actions while paused
+- Never lose accounting consistency
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Run
+forge test -vvv
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Success
+Test prints:
+FLAG{mission_B_capstone_secure_vault_solved}

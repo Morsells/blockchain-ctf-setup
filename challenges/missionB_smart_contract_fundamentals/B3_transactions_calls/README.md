@@ -1,23 +1,26 @@
-# Mission B3: Transaktionen vs. Calls
+### B4 - Transactions vs Calls
 
-## Lernziele
-- Unterschied zwischen Transaktion (tx) und Call (simulation)
-- Wann Gas bezahlt werden muss
-- State-Änderungen nur durch Transaktionen
+## Goal:
+Understand the difference between blockchain transactions and read-only calls and how they affect contract state.
+You must implement a counter that updates correctly when users interact with it through real transactions, while read functions simply return stored values.
 
-## Aufgabe
-Der `Voter` Contract erlaubt Votes, aber die `vote()` Funktion hat ein Problem:
-Sie kann durch einfache Calls (Simulation) umgangen werden, ohne Gas zu zahlen.
+## The contract must:
 
-Deine Aufgabe: Nutze die `Solution.sol` um zu zeigen, dass:
-1. Ein Vote als Transaktion durchgeführt wird (State-Änderung)
-2. Die Vote-Zählung korrekt funktioniert
+- Increase the counter on each transaction
+- Store the address of the last caller
+- Return stored values through getter functions
+- Mark the challenge solved after 3 different transactions
+
+## Run
+forge test -vvv
+
+## Success
+Test prints:
+FLAG{mission_B3_transactions_calls_solved}
 
 ## Hints
+
 - Calls simulieren nur, ändern aber keinen State
 - Transaktionen kosten Gas und ändern State
-- `require()` Bedingungen werden auch bei Calls geprüft
+- require() Bedingungen werden auch bei Calls geprüft
 
-## Erfolgskriterium
-Wenn 5 korrekte Votes durchgeführt wurden, ist die Mission gelöst.
-Flag: `FLAG{mission_B3_transactions_calls_solved}`
