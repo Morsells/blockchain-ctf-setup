@@ -14,3 +14,6 @@ yarn-error.log*
 .DS_Store
 .vscode/
 .idea/
+
+#Test Data
+tooling/ctfd/data/
