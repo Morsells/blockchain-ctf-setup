@@ -6,6 +6,18 @@ Dieses Repository liefert eine lokale Blockchain-CTF-Umgebung:
 - **Smart-Contract-Challenges** liegen als einzelne **Forge-Projekte** im Ordner `challenges/`
 - Challenges werden lokal mit `forge test` validiert (typisch: bei Erfolg wird eine **FLAG** ausgegeben)
 
+
+## Projektstatus
+
+Dieses Repository ist ein Hochschulprojekt (Teamarbeit an der THWS) und ein
+Pilot bzw. Konzept für ein Blockchain-Security-CTF. Es ist kein
+veröffentlichtes oder produktiv betriebenes Angebot.
+
+- Das Setup läuft ausschließlich lokal und dient Entwicklung und Demonstration.
+- Lösungen und Flags liegen im Repository. Für einen echten Wettbewerb müssten
+  sie entfernt und die Konfiguration (z. B. `SECRET_KEY`) angepasst werden.
+- Laufzeitdaten von CTFd (`tooling/ctfd/data/`) sind nicht Teil des Repositories.
+
 ---
 
 ## Voraussetzungen
